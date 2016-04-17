@@ -99,8 +99,8 @@ def setNewRangeData(array, porcent, nameExit="Transformed with restricted data")
 	plt.title(nameExit)
 	plt.xlabel("Frequency")
 	plt.ylabel("Amplitude")
-	plt.savefig(nameExit+".png")
 	plt.plot(newRangeData)
+	plt.savefig(nameExit+".png")
 	plt.show()
 	return newRangeData
 
@@ -119,7 +119,7 @@ def simpleInverseTransformGraphics(fourierSignal, nameExit="Anti Transformed wit
 	plt.ylabel("Amplitude [dB]")
 	plt.savefig(nameExit+".png")
 	plt.show()
-	return 
+	return transfor
 
 #CUERPO DEL PROGRAMA
 rate, information = read("beacon.wav")
@@ -132,9 +132,9 @@ inverseTransformGraphics(information, rate, fourierTransform)
 #Graficando transformada de Fourier restringiendo el conjunto de datos.
 newData = setNewRangeData(fourierTransform, 15)
 #Obteniendo anitransformada de los datos restringidos.
-simpleInverseTransformGraphics(newData)
+newSignal = simpleInverseTransformGraphics(newData)
 #Escribo los datos en un archivo .wav para comparar el sonido de los datos truncados vs originales
-write("beaconWithRestrictedData.wav",rate,newData)
+write("beaconWithRestrictedData.wav",rate,newSignal)
 
 
 
